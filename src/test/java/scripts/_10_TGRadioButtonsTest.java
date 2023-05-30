@@ -10,6 +10,7 @@ import java.util.List;
 
 public class _10_TGRadioButtonsTest extends Base {
 
+
     /**
      * TEST CASE 1
      * Go to https://techglobal-training.com/frontend/
