@@ -5,148 +5,106 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.Project3Page;
 import utils.Waiter;
 
 public class Project3 extends Base{
+
     @BeforeMethod
     public void setPage(){
         driver.get("https://techglobal-training.com/frontend/project-3");
+        project3Page = new Project3Page();
     }
 
     @Test ( priority = 1 )
     public void validateDefaultBookTripForm(){
-        WebElement oneWayRadioButton = driver.findElement(By.cssSelector("label[class='radio ml-0']"));
-        WebElement roundTripRadioButton = driver.findElement(By.cssSelector("label[class='radio']"));
-        WebElement cabinClassLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > label"));
-        WebElement cabinClassDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > div"));
-        WebElement fromLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > label"));
-        WebElement fromDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > div"));
-        WebElement toLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > label"));
-        WebElement toDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > div"));
-        WebElement departLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(5) > label"));
-        WebElement departPickDate = driver.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div"));
-        WebElement returnLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(6) > label"));
-        WebElement returnPickDate = driver.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div"));
-        WebElement numberOfPassengersLabel = driver.findElement(By.cssSelector("div:nth-child(7) > label"));
-        WebElement numberOfPassengersDropdown = driver.findElement(By.cssSelector("div:nth-child(7) > div"));
-        WebElement passenger1Label = driver.findElement(By.cssSelector("div:nth-child(8) > label"));
-        WebElement passenger1Dropdown = driver.findElement(By.cssSelector("div:nth-child(8) > div"));
-        WebElement bookButton = driver.findElement(By.cssSelector("button[class='Button_c_button__w4+7K null']"));
 
 
-        oneWayRadioButton.click();
+        project3Page.oneWayRadioButton.click();
         Waiter.pause(5);
-        Assert.assertTrue(oneWayRadioButton.isDisplayed());
-        Assert.assertTrue(oneWayRadioButton.isEnabled());
-        Assert.assertTrue(oneWayRadioButton.isSelected());
+        Assert.assertTrue(project3Page.oneWayRadioButton.isDisplayed());
+        Assert.assertTrue(project3Page.oneWayRadioButton.isEnabled());
+        Assert.assertTrue(project3Page.oneWayRadioButton.isSelected());
 
-        Assert.assertTrue(roundTripRadioButton.isDisplayed());
-        Assert.assertTrue(roundTripRadioButton.isEnabled());
-        Assert.assertFalse(roundTripRadioButton.isSelected());
+        Assert.assertTrue(project3Page.roundTripRadioButton.isDisplayed());
+        Assert.assertTrue(project3Page.roundTripRadioButton.isEnabled());
+        Assert.assertFalse(project3Page.roundTripRadioButton.isSelected());
 
-        Assert.assertTrue(cabinClassLabel.isDisplayed());
-        Assert.assertTrue(cabinClassDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.cabinClassLabel.isDisplayed());
+        Assert.assertTrue(project3Page.cabinClassDropdown.isDisplayed());
 
-        Assert.assertTrue(fromLabel.isDisplayed());
-        Assert.assertTrue(fromDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.fromLabel.isDisplayed());
+        Assert.assertTrue(project3Page.fromDropdown.isDisplayed());
 
-        Assert.assertTrue(toLabel.isDisplayed());
-        Assert.assertTrue(toDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.toLabel.isDisplayed());
+        Assert.assertTrue(project3Page.toDropdown.isDisplayed());
 
-        Assert.assertTrue(departLabel.isDisplayed());
-        Assert.assertTrue(departPickDate.isDisplayed());
+        Assert.assertTrue(project3Page.departLabel.isDisplayed());
+        Assert.assertTrue(project3Page.departPickDate.isDisplayed());
 
-        Assert.assertTrue(returnLabel.isDisplayed());
-        Assert.assertTrue(returnPickDate.isDisplayed());
+        Assert.assertTrue(project3Page.returnLabel.isDisplayed());
+        Assert.assertTrue(project3Page.returnPickDate.isDisplayed());
 
-        Assert.assertTrue(numberOfPassengersLabel.isDisplayed());
-        Assert.assertTrue(numberOfPassengersDropdown.isDisplayed());
-        Assert.assertEquals(numberOfPassengersDropdown.getText(), "1");
+        Assert.assertTrue(project3Page.numberOfPassengersLabel.isDisplayed());
+        Assert.assertTrue(project3Page.numberOfPassengersDropdown.isDisplayed());
+        Assert.assertEquals(project3Page.numberOfPassengersDropdown.findElement(By.cssSelector("div:nth-child(7) > div > select > option:nth-child(1)")).getText(), "1");
 
-        Assert.assertTrue(passenger1Label.isDisplayed());
-        Assert.assertTrue(passenger1Dropdown.isDisplayed());
-        Assert.assertEquals(passenger1Dropdown.getText(), "Adult (16-64)");
+        Assert.assertTrue(project3Page.passenger1Label.isDisplayed());
+        Assert.assertTrue(project3Page.passenger1Dropdown.isDisplayed());
+        Assert.assertEquals(project3Page.passenger1Dropdown.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[7]/form/div[1]/div[8]/div/select/option[1]")).getText(), "Adult (16-64)");
 
-        Assert.assertTrue(bookButton.isDisplayed());
-        Assert.assertTrue(bookButton.isEnabled());
-        Waiter.pause(5);
+        Assert.assertTrue(project3Page.bookButton.isDisplayed());
+        Assert.assertTrue(project3Page.bookButton.isEnabled());
 
     }
 
     @Test ( priority = 2)
         public void validateBookTripWithRoundTrip(){
-        WebElement oneWayRadioButton = driver.findElement(By.cssSelector("label[class='radio ml-0']"));
-        WebElement roundTripRadioButton = driver.findElement(By.cssSelector("label[class='radio']"));
-        WebElement cabinClassLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > label"));
-        WebElement cabinClassDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > div"));
-        WebElement fromLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > label"));
-        WebElement fromDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > div"));
-        WebElement toLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > label"));
-        WebElement toDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > div"));
-        WebElement departLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(5) > label"));
-        WebElement departPickDate = driver.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div"));
-        WebElement returnLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(6) > label"));
-        WebElement returnPickDate = driver.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div"));
-        WebElement numberOfPassengersLabel = driver.findElement(By.cssSelector("div:nth-child(7) > label"));
-        WebElement numberOfPassengersDropdown = driver.findElement(By.cssSelector("div:nth-child(7) > div"));
-        WebElement passenger1Label = driver.findElement(By.cssSelector("div:nth-child(8) > label"));
-        WebElement passenger1Dropdown = driver.findElement(By.cssSelector("div:nth-child(8) > div"));
-        WebElement bookButton = driver.findElement(By.className("Button_c_button__w4+7K null"));
+        project3Page.roundTripRadioButton.click();
 
-        roundTripRadioButton.click();
+        Assert.assertTrue(project3Page.roundTripRadioButton.isSelected());
+        Assert.assertFalse(project3Page.oneWayRadioButton.isSelected());
 
-        Assert.assertTrue(roundTripRadioButton.isSelected());
-        Assert.assertFalse(oneWayRadioButton.isSelected());
+        Assert.assertTrue(project3Page.cabinClassLabel.isDisplayed());
+        Assert.assertTrue(project3Page.cabinClassDropdown.isDisplayed());
 
-        Assert.assertTrue(cabinClassLabel.isDisplayed());
-        Assert.assertTrue(cabinClassDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.fromLabel.isDisplayed());
+        Assert.assertTrue(project3Page.fromDropdown.isDisplayed());
 
-        Assert.assertTrue(fromLabel.isDisplayed());
-        Assert.assertTrue(fromDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.toLabel.isDisplayed());
+        Assert.assertTrue(project3Page.toDropdown.isDisplayed());
 
-        Assert.assertTrue(toLabel.isDisplayed());
-        Assert.assertTrue(toDropdown.isDisplayed());
+        Assert.assertTrue(project3Page.departLabel.isDisplayed());
+        Assert.assertTrue(project3Page.departPickDate.isDisplayed());
 
-        Assert.assertTrue(departLabel.isDisplayed());
-        Assert.assertTrue(departPickDate.isDisplayed());
+        Assert.assertTrue(project3Page.returnLabel.isDisplayed());
+        Assert.assertTrue(project3Page.returnPickDate.isDisplayed());
 
-        Assert.assertTrue(returnLabel.isDisplayed());
-        Assert.assertTrue(returnPickDate.isDisplayed());
+        Assert.assertTrue(project3Page.numberOfPassengersLabel.isDisplayed());
+        Assert.assertTrue(project3Page.numberOfPassengersDropdown.isDisplayed());
+        Assert.assertEquals(project3Page.numberOfPassengersDropdown.getText(), "1");
 
-        Assert.assertTrue(numberOfPassengersLabel.isDisplayed());
-        Assert.assertTrue(numberOfPassengersDropdown.isDisplayed());
-        Assert.assertEquals(numberOfPassengersDropdown.getText(), "1");
+        Assert.assertTrue(project3Page.passenger1Label.isDisplayed());
+        Assert.assertTrue(project3Page.passenger1Dropdown.isDisplayed());
+        Assert.assertEquals(project3Page.passenger1Dropdown.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[7]/form/div[1]/div[8]/div/select/option[1]")).getText(), "Adult (16-64)");
 
-        Assert.assertTrue(passenger1Label.isDisplayed());
-        Assert.assertTrue(passenger1Dropdown.isDisplayed());
-        Assert.assertEquals(passenger1Dropdown.getText(), "Adult (16-64)");
-
-        Assert.assertTrue(bookButton.isDisplayed());
-        Assert.assertTrue(bookButton.isEnabled());
+        Assert.assertTrue(project3Page.bookButton.isDisplayed());
+        Assert.assertTrue(project3Page.bookButton.isEnabled());
 
 
         }
         @Test ( priority = 3)
         public void validateBooking1PassengerOneWay(){
-            WebElement oneWayRadioButton = driver.findElement(By.cssSelector("label[class='radio ml-0']"));
-            WebElement cabinClassDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > div"));
-            WebElement fromDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > div"));
-            WebElement toDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > div"));
-            WebElement departPickDate = driver.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div"));
-            WebElement numberOfPassengersDropdown = driver.findElement(By.cssSelector("div:nth-child(7) > div"));
-            WebElement passenger1Dropdown = driver.findElement(By.cssSelector("div:nth-child(8) > div"));
-            WebElement bookButton = driver.findElement(By.className("Button_c_button__w4+7K null"));
 
-            oneWayRadioButton.click();
-            cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(3)")).click();
-            fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(15)")).click();
-            toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(11)")).click();
-            departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("15");
-            numberOfPassengersDropdown.findElement(By.cssSelector("div:nth-child(7) > div > select > option:nth-child(1)")).click();
-            passenger1Dropdown.findElement(By.cssSelector("div:nth-child(8) > div > select > option:nth-child(2)")).click();
-            bookButton.click();
-            WebElement departMessage = driver.findElement(By.className("ml-3"));
-            Assert.assertEquals(departMessage.getText(), "DEPART\n" +
+            project3Page.oneWayRadioButton.click();
+            project3Page.cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(3)")).click();
+            project3Page.fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(15)")).click();
+            project3Page.toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(11)")).click();
+            project3Page.departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("15");
+            project3Page.numberOfPassengersDropdown.findElement(By.cssSelector("div:nth-child(7) > div > select > option:nth-child(1)")).click();
+            project3Page.passenger1Dropdown.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[7]/form/div[1]/div[8]/div/select/option[2]")).click();
+            project3Page.bookButton.click();
+            Assert.assertEquals(project3Page.departMessage.getText(), "DEPART\n" +
                     "IL to FL\n" +
                     "Thu Jun 15 2023\n" +
                     "\n" +
@@ -160,28 +118,19 @@ public class Project3 extends Base{
 
         @Test ( priority = 4 )
         public void validateBooking1PassengerRoundTtrip(){
-            WebElement roundTripRadioButton = driver.findElement(By.cssSelector("label[class='radio']"));
-            WebElement cabinClassDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > div"));
-            WebElement fromDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > div"));
-            WebElement toDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > div"));
-            WebElement departPickDate = driver.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div"));
-            WebElement returnPickDate = driver.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div"));
-            WebElement numberOfPassengersDropdown = driver.findElement(By.cssSelector("div:nth-child(7) > div"));
-            WebElement passenger1Dropdown = driver.findElement(By.cssSelector("div:nth-child(8) > div"));
-            WebElement bookButton = driver.findElement(By.className("Button_c_button__w4+7K null"));
 
-            roundTripRadioButton.click();
-            cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(4)")).click();
-            fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(6)")).click();
-            toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(15)")).click();
-            departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("15");
-            returnPickDate.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__month")).sendKeys("7");
-            numberOfPassengersDropdown.findElement(By.cssSelector("div:nth-child(7) > div > select > option:nth-child(1)")).click();
-            passenger1Dropdown.findElement(By.cssSelector("div:nth-child(8) > div > select > option:nth-child(1)")).click();
-            bookButton.click();
-            WebElement message = driver.findElement(By.className("ml-3"));
 
-            Assert.assertEquals(message.getText(), "DEPART\n" +
+            project3Page.roundTripRadioButton.click();
+            project3Page.cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(4)")).click();
+            project3Page.fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(6)")).click();
+            project3Page.toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(15)")).click();
+            project3Page.departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("15");
+            project3Page.returnPickDate.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__month")).sendKeys("7");
+            project3Page.numberOfPassengersDropdown.findElement(By.cssSelector("div:nth-child(7) > div > select > option:nth-child(1)")).click();
+            project3Page.passenger1Dropdown.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[7]/form/div[1]/div[8]/div/select/option[2]")).click();
+            project3Page.bookButton.click();
+
+            Assert.assertEquals(project3Page.departMessage.getText(), "DEPART\n" +
                     "CA to IL\n" +
                     "Thu Jun 15 2023\n" +
                     "\n" +
@@ -202,34 +151,16 @@ public class Project3 extends Base{
         }
         @Test ( priority = 5 )
         public void validateBooking2PassengersOneWay(){
-            WebElement oneWayRadioButton = driver.findElement(By.cssSelector("label[class='radio ml-0']"));
-            WebElement roundTripRadioButton = driver.findElement(By.cssSelector("label[class='radio']"));
-            WebElement cabinClassLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > label"));
-            WebElement cabinClassDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(2) > div"));
-            WebElement fromLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > label"));
-            WebElement fromDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(3) > div"));
-            WebElement toLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > label"));
-            WebElement toDropdown = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(4) > div"));
-            WebElement departLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(5) > label"));
-            WebElement departPickDate = driver.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div"));
-            WebElement returnLabel = driver.findElement(By.cssSelector("div.Projects_container__g8xeT > div:nth-child(6) > label"));
-            WebElement returnPickDate = driver.findElement(By.cssSelector("div:nth-child(6) > div > div > div > div"));
-            WebElement numberOfPassengersLabel = driver.findElement(By.cssSelector("div:nth-child(7) > label"));
-            WebElement numberOfPassengersDropdown = driver.findElement(By.cssSelector("div:nth-child(7) > div"));
-            WebElement passenger1Label = driver.findElement(By.cssSelector("div:nth-child(8) > label"));
-            WebElement passenger1Dropdown = driver.findElement(By.cssSelector("div:nth-child(8) > div"));
-            WebElement passenger2DDropdown = driver.findElement(By.cssSelector("div:nth-child(9) > div > select"));
-            WebElement bookButton = driver.findElement(By.className("Button_c_button__w4+7K null"));
 
-            oneWayRadioButton.click();
-            cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(2)")).click();
-            fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(34)")).click();
-            toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(45)")).click();
-            departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("9");
-            numberOfPassengersDropdown.sendKeys("2");
-            passenger1Dropdown.findElement(By.cssSelector("div:nth-child(8) > div > select > option:nth-child(1)")).click();
-            passenger2DDropdown.findElement(By.cssSelector("div:nth-child(9) > div > select > option:nth-child(4)")).click();
-            bookButton.click();
+            project3Page.oneWayRadioButton.click();
+            project3Page.cabinClassDropdown.findElement(By.cssSelector("div:nth-child(2) > div > select > option:nth-child(2)")).click();
+            project3Page.fromDropdown.findElement(By.cssSelector("div:nth-child(3) > div > select > option:nth-child(34)")).click();
+            project3Page.toDropdown.findElement(By.cssSelector("div:nth-child(4) > div > select > option:nth-child(45)")).click();
+            project3Page.departPickDate.findElement(By.cssSelector("div:nth-child(5) > div > div > div > div > input.react-date-picker__inputGroup__input.react-date-picker__inputGroup__day")).sendKeys("9");
+            project3Page.numberOfPassengersDropdown.sendKeys("2");
+            project3Page.passenger1Dropdown.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div/div/div[7]/form/div[1]/div[8]/div/select/option[2]")).click();
+            project3Page.passenger2DDropdown.findElement(By.cssSelector("div:nth-child(9) > div > select > option:nth-child(4)")).click();
+            project3Page.bookButton.click();
 
             WebElement message = driver.findElement(By.className("ml-3"));
             Assert.assertEquals(message.getText(), "DEPART\n" +
